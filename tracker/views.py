@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import JobApplication
+from .forms import JobApplicationForm
 
 # Create your views here.
 def application_list(request):
@@ -18,3 +19,18 @@ def application_detail(request, pk):
     }
 
     return render(request, "tracker/application_detail.html", context)
+
+def application_create(request):
+    if request.method == "POST":
+        form = JobApplicationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("application_list")
+    else:
+        form = JobApplicationForm()
+    
+    context = {
+        "form": form
+    }
+
+    return render(request, "tracker/application_form.html", context)
