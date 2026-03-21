@@ -12,7 +12,9 @@
         <ul>
             {% for application in applications %}
                 <li>
+                    <a href="/applications/{{ application.id }}/"> 
                     {{ application.company_name}} - {{ application.position_title }} - {{ application.status }}
+                    </a> 
                 </li>
             {% endfor %}
         </ul>
