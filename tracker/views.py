@@ -41,11 +41,11 @@ def application_update(request, pk):
         form = JobApplicationForm(request.POST, instance=application)
         if form.is_valid():
             form.save()
-            return redirect("application_detail")
+            return redirect("application_detail", application.id)
     else:
         form = JobApplicationForm(instance=application)
 
-        context = {
+    context = {
             "form": form
         }
     
