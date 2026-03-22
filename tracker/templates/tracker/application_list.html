@@ -10,6 +10,16 @@
         
         <a href="/applications/create/">Add New Application</a>
 
+        <form method="GET">
+            <select name="status">
+                <option value="" {% if not selected_status %}selected{% endif %}>All</option>
+                <option value="Applied" {% if selected_status == "Applied" %}selected{% endif %}>Applied</option>
+                <option value="Interview" {% if selected_status == "Interview" %}selected{% endif %}>Interview</option>
+                <option value="Rejected" {% if selected_status == "Rejected" %}selected{% endif %}>Rejected</option>
+                <option value="Offer" {% if selected_status == "Offer" %}selected{% endif %}>Offer</option>
+            </select> 
+            <button type="submit">Filter</button>
+        </form>
         {% if applications %}
         <ul>
             {% for application in applications %}

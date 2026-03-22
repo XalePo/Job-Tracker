@@ -4,9 +4,15 @@ from .forms import JobApplicationForm
 
 # Create your views here.
 def application_list(request):
+    selected_status = request.GET.get("status")
     applications = JobApplication.objects.all()
+
+    if selected_status:
+        applications = applications.filter(status=selected_status)
+
     context = {
-        "applications": applications
+        "applications": applications,
+        "selected_status": selected_status,
     }
 
     return render(request, "tracker/application_list.html", context)
