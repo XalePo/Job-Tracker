@@ -50,3 +50,15 @@ def application_update(request, pk):
         }
     
     return render(request, "tracker/application_form.html", context)
+
+def application_delete(request, pk):
+    application = JobApplication.objects.get(id=pk)
+    if request.method == "POST":
+        application.delete()
+        return redirect("application_list")
+    
+    context = {
+        "application": application
+    }    
+    
+    return render(request, "tracker/application_confirm_delete.html", context)
