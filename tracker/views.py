@@ -34,3 +34,19 @@ def application_create(request):
     }
 
     return render(request, "tracker/application_form.html", context)
+
+def application_update(request, pk):
+    application = JobApplication.objects.get(id=pk)
+    if request.method == "POST":
+        form = JobApplicationForm(request.POST, instance=application)
+        if form.is_valid():
+            form.save()
+            return redirect("application_detail")
+    else:
+        form = JobApplicationForm(instance=application)
+
+        context = {
+            "form": form
+        }
+    
+    return render(request, "tracker/application_form.html", context)
