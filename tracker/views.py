@@ -14,10 +14,21 @@ def application_list(request):
     if search_query:
         applications = applications.filter(company_name__icontains=search_query)
 
+    total_count = JobApplication.objects.count()
+    applied_count = JobApplication.objects.filter(status="Applied").count()
+    interview_count = JobApplication.objects.filter(status="Interview").count()
+    rejected_count = JobApplication.objects.filter(status="Rejected").count()
+    offer_count = JobApplication.objects.filter(status="Offer").count()
+
     context = {
         "applications": applications,
         "selected_status": selected_status,
         "search_query": search_query,
+        "total_count": total_count,
+        "applied_count": applied_count,
+        "interview_count": interview_count,
+        "rejected_count": rejected_count,
+        "offer_count": offer_count,
     }
 
     return render(request, "tracker/application_list.html", context)
