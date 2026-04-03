@@ -5,14 +5,19 @@ from .forms import JobApplicationForm
 # Create your views here.
 def application_list(request):
     selected_status = request.GET.get("status")
+    search_query = request.GET.get("q", "")
     applications = JobApplication.objects.all()
 
     if selected_status:
         applications = applications.filter(status=selected_status)
 
+    if search_query:
+        applications = applications.filter(company_name__icontains=search_query)
+
     context = {
         "applications": applications,
         "selected_status": selected_status,
+        "search_query": search_query,
     }
 
     return render(request, "tracker/application_list.html", context)

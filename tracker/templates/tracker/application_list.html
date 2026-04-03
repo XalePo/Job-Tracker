@@ -11,6 +11,7 @@
         <a href="/applications/create/">Add New Application</a>
 
         <form method="GET">
+            <input name="q" type="text" value="{{ search_query }}" placeholder="Search by company">
             <select name="status">
                 <option value="" {% if not selected_status %}selected{% endif %}>All</option>
                 <option value="Applied" {% if selected_status == "Applied" %}selected{% endif %}>Applied</option>
@@ -19,6 +20,7 @@
                 <option value="Offer" {% if selected_status == "Offer" %}selected{% endif %}>Offer</option>
             </select> 
             <button type="submit">Filter</button>
+            <a href="/applications/">Clear Filters</a>
         </form>
         {% if applications %}
         <ul>
@@ -31,7 +33,11 @@
             {% endfor %}
         </ul>
         {% else %}
-            <p>No job applications yet.</p>
+            {% if selected_status or search_query %}
+                <p>No matching applications found.</p>
+            {% else %}
+                <p>No job applications yet.</p>
+            {% endif %}
         {% endif %}
     </body>
 </html>
