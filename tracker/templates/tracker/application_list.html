@@ -7,7 +7,15 @@
     </head>
     <body>
         <h1>Job Applications</h1>
-        
+        <section>
+            <ul>
+                <li>Total applications: {{ total_count }}</li>
+                <li>Applied: {{ applied_count }}</li>
+                <li>Interview: {{ interview_count }}</li>
+                <li>Rejected: {{ rejected_count }}</li>
+                <li>Offer: {{ offer_count }}</li>
+            </ul>
+        </section>
         <a href="/applications/create/">Add New Application</a>
 
         <form method="GET">
