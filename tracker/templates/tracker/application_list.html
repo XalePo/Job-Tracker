@@ -27,6 +27,12 @@
                 <option value="Rejected" {% if selected_status == "Rejected" %}selected{% endif %}>Rejected</option>
                 <option value="Offer" {% if selected_status == "Offer" %}selected{% endif %}>Offer</option>
             </select> 
+            <select name="sort">
+                <option value="newest" {% if sort_by == "newest" %}selected{% endif %}>Newest First</option>
+                <option value="oldest" {% if sort_by == "oldest" %}selected{% endif %}>Oldest First</option>
+                <option value="company_asc" {% if sort_by == "company_asc" %}selected{% endif %}>Company A-Z</option>
+                <option value="company_desc" {% if sort_by == "company_desc" %}selected{% endif %}>Company Z-A</option>
+            </select>
             <button type="submit">Filter</button>
             <a href="/applications/">Clear Filters</a>
         </form>

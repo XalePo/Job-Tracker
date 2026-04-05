@@ -6,6 +6,7 @@ from .forms import JobApplicationForm
 def application_list(request):
     selected_status = request.GET.get("status")
     search_query = request.GET.get("q", "")
+    sort_by = request.GET.get("sort", "newest")
     applications = JobApplication.objects.all()
 
     if selected_status:
@@ -20,6 +21,15 @@ def application_list(request):
     rejected_count = JobApplication.objects.filter(status="Rejected").count()
     offer_count = JobApplication.objects.filter(status="Offer").count()
 
+    if sort_by == "newest":
+        applications = applications.order_by("-date_applied")
+    elif sort_by == "oldest":
+        applications = applications.order_by("date_applied")
+    elif sort_by == "company_asc":
+        applications = applications.order_by("company_name")
+    elif sort_by == "company_desc":
+        applications = applications.order_by("-company_name")
+
     context = {
         "applications": applications,
         "selected_status": selected_status,
@@ -29,6 +39,7 @@ def application_list(request):
         "interview_count": interview_count,
         "rejected_count": rejected_count,
         "offer_count": offer_count,
+        "sort_by": sort_by
     }
 
     return render(request, "tracker/application_list.html", context)
