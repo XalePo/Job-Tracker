@@ -36,9 +36,9 @@
             <button type="submit">Filter</button>
             <a href="/applications/">Clear Filters</a>
         </form>
-        {% if applications %}
+        {% if page_obj %}
         <ul>
-            {% for application in applications %}
+            {% for application in page_obj %}
                 <li>
                     <a href="/applications/{{ application.id }}/"> 
                     {{ application.company_name}} - {{ application.position_title }} - {{ application.status }}
@@ -46,6 +46,17 @@
                 </li>
             {% endfor %}
         </ul>
+            <div>
+                {% if page_obj.has_previous %}
+                    <a href="/applications/?q={{ search_query }}&status={{ selected_status }}&sort={{ sort_by }}&page={{ page_obj.previous_page_number }}">Previous</a>
+                {% endif %}
+
+                <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+
+                {% if page_obj.has_next %}
+                    <a href="/applications/?q={{ search_query }}&status={{ selected_status }}&sort={{ sort_by }}&page={{ page_obj.next_page_number }}">Next</a>
+                {% endif %}
+            </div>
         {% else %}
             {% if selected_status or search_query %}
                 <p>No matching applications found.</p>

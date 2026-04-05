@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
+from django.core.paginator import Paginator
 from .models import JobApplication
 from .forms import JobApplicationForm
 
 # Create your views here.
 def application_list(request):
-    selected_status = request.GET.get("status")
+    selected_status = request.GET.get("status", "")
     search_query = request.GET.get("q", "")
     sort_by = request.GET.get("sort", "newest")
     applications = JobApplication.objects.all()
@@ -30,6 +31,10 @@ def application_list(request):
     elif sort_by == "company_desc":
         applications = applications.order_by("-company_name")
 
+    paginator = Paginator(applications, 5)
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+
     context = {
         "applications": applications,
         "selected_status": selected_status,
@@ -39,7 +44,8 @@ def application_list(request):
         "interview_count": interview_count,
         "rejected_count": rejected_count,
         "offer_count": offer_count,
-        "sort_by": sort_by
+        "sort_by": sort_by,
+        "page_obj": page_obj,
     }
 
     return render(request, "tracker/application_list.html", context)
@@ -52,6 +58,7 @@ def application_detail(request, pk):
     }
 
     return render(request, "tracker/application_detail.html", context)
+
 
 def application_create(request):
     if request.method == "POST":
@@ -68,6 +75,7 @@ def application_create(request):
 
     return render(request, "tracker/application_form.html", context)
 
+
 def application_update(request, pk):
     application = JobApplication.objects.get(id=pk)
     if request.method == "POST":
@@ -83,6 +91,7 @@ def application_update(request, pk):
         }
     
     return render(request, "tracker/application_form.html", context)
+
 
 def application_delete(request, pk):
     application = JobApplication.objects.get(id=pk)
