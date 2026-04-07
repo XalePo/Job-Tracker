@@ -1,21 +1,32 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Application Detail</title>
+        <link rel="stylesheet" href="{% static 'tracker/styles.css' %}">
     </head>
     <body>
-        <h1>Application Detail</h1>
+        
+        <div class="detail-wrapper">
+        <h1>Application Details</h1>
 
+        <div class="detail-card">
         <p><strong>Company:</strong> {{ application.company_name }}</p>
         <p><strong>Position:</strong> {{ application.position_title }}</p>
         <p><strong>Status:</strong> {{ application.status }}</p>
-        <p><strong>Date Applied</strong> {{ application.date_applied }}</p>
+        <p><strong>Date Applied:</strong> {{ application.date_applied }}</p>
         <p><strong>Notes:</strong> {{ application.notes }}</p>
+        </div>
 
+        <div class="detail-actions">
         <a href="/applications/{{ application.id }}/edit/">Edit Application</a>
         <a href="/applications/{{ application.id }}/delete/">Delete Application</a>
         <a href="/applications/">Back to applications</a>
+        </div>
+
+        </div>
     </body>
 </html>

@@ -1,19 +1,30 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Create Job Application</title>
+        <link rel="stylesheet" href="{% static 'tracker/styles.css' %}">
     </head>
     <body>
+        <div class="form-wrapper">
+
         <h1>Create Job Application</h1>
 
+        <div class="form-card">
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
             <button type="submit">Save Application</button>
         </form>
+        </div>
 
+        <div class="form-actions">
         <a href="/applications/">Back to applications</a>
+        </div>
+
+        </div>
     </body>
 </html>

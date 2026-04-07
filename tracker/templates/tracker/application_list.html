@@ -1,13 +1,19 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Job Applications</title>
+        <link rel="stylesheet" href="{% static 'tracker/styles.css' %}">
     </head>
     <body>
+        
         <h1>Job Applications</h1>
-        <section>
+
+        <!--Summary-->
+        <section class="list-summary">
             <ul>
                 <li>Total applications: {{ total_count }}</li>
                 <li>Applied: {{ applied_count }}</li>
@@ -16,9 +22,16 @@
                 <li>Offer: {{ offer_count }}</li>
             </ul>
         </section>
-        <a href="/applications/create/">Add New Application</a>
 
+        <div class="list-action-links">
+            <a href="/applications/create/">Add New Application</a>
+            <a href="/applications/">Clear Filters</a>
+        </div>
+
+        <!--Filters-->
         <form method="GET">
+
+            <div class="list-filter">
             <input name="q" type="text" value="{{ search_query }}" placeholder="Search by company">
             <select name="status">
                 <option value="" {% if not selected_status %}selected{% endif %}>All</option>
@@ -27,6 +40,7 @@
                 <option value="Rejected" {% if selected_status == "Rejected" %}selected{% endif %}>Rejected</option>
                 <option value="Offer" {% if selected_status == "Offer" %}selected{% endif %}>Offer</option>
             </select> 
+
             <select name="sort">
                 <option value="newest" {% if sort_by == "newest" %}selected{% endif %}>Newest First</option>
                 <option value="oldest" {% if sort_by == "oldest" %}selected{% endif %}>Oldest First</option>
@@ -34,8 +48,11 @@
                 <option value="company_desc" {% if sort_by == "company_desc" %}selected{% endif %}>Company Z-A</option>
             </select>
             <button type="submit">Filter</button>
-            <a href="/applications/">Clear Filters</a>
+            </div>
         </form>
+        <section class="list-results">
+        
+        <!--Pagination-->
         {% if page_obj %}
         <ul>
             {% for application in page_obj %}
@@ -46,7 +63,7 @@
                 </li>
             {% endfor %}
         </ul>
-            <div>
+            <div class="list-pagination-controls">
                 {% if page_obj.has_previous %}
                     <a href="/applications/?q={{ search_query }}&status={{ selected_status }}&sort={{ sort_by }}&page={{ page_obj.previous_page_number }}">Previous</a>
                 {% endif %}
@@ -64,5 +81,6 @@
                 <p>No job applications yet.</p>
             {% endif %}
         {% endif %}
+        </section>
     </body>
 </html>

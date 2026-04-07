@@ -1,0 +1,195 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 2rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #f5f5f5;
+    color: #222;
+}
+
+/*---------- Applications List ----------*/
+.list-summary, .list-results {
+    background-color: white;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.list-action-links {
+    display: inline-block;
+    padding: 1rem;
+    border: 1px solid #333;
+    border-radius: 6px;
+}
+
+.list-action-links a {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    margin-right: 0.75rem;
+    text-decoration: none;
+    color: #222;
+    background-color: white;
+    border: 1px solid #333;
+    border-radius: 6px;
+}
+
+.list-filter {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+}
+
+.list-filter input, .list-filter select, .list-filter button {
+    padding: 0.5rem;
+    border: 1px solid #bbb;
+    border-radius: 6px;
+    margin-top: 0.5rem;
+    cursor: pointer;
+}
+
+.list-results a {
+    color: #1f3a5f;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.list-results a:hover {
+    color: #16304d;
+    text-decoration: underline;
+}
+
+.list-results li {
+    margin-bottom: 0.5rem;
+}
+
+.list-pagination-controls {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.list-pagination-controls a {
+    text-decoration: none;
+    color: #1f3a5f;
+    padding: 0.4rem 0.8rem;
+    border: 1px solid #333;
+    border-radius: 6px;
+    background-color: white;
+}
+
+.list-pagination-controls a:hover {
+    background-color: #eaeaea;
+}
+
+.list-pagination-controls {
+    font-weight: 500;
+}
+
+/*---------- Applications Details ----------*/
+.detail-card {
+    background-color: white;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.detail-actions {
+    margin-top: 1rem;
+}
+
+.detail-actions a {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    margin-right: 0.75rem;
+    text-decoration: none;
+    color: #222;
+    background-color: white;
+    border: 1px solid #333;
+    border-radius: 6px;
+}
+
+.detail-actions a:hover {
+    background-color: #eaeaea;
+}
+
+/*---------- Applications Form ----------*/
+.form-card {
+    background-color: white;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.form-card input, .form-card select, .form-card textarea {
+    padding: 0.5rem;
+    border: 1px solid #bbb;
+    border-radius: 0.375rem;
+}
+
+.form-card button {
+    display: inline-block;
+    color: #222;
+    padding: 0.5rem 1rem;
+    border: 1px solid #444;
+    border-radius: 0.375rem;
+    cursor: pointer;
+}
+
+.form-actions a {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    margin-right: 0.75rem;
+    text-decoration: none;
+    color: #222;
+    background-color: white;
+    border: 1px solid #333;
+    border-radius: 6px;
+}
+
+.form-actions a:hover {
+    background-color: #eaeaea;
+}
+
+/*---------- Applications Delete ----------*/
+.delete-card {
+    background-color: white;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.delete-card button {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    color: #222;
+    background-color: white;
+    border: 1px solid #333;
+    border-radius: 0.375rem;
+    cursor: pointer;
+}
+
+.delete-card button:hover {
+    background-color: #eaeaea;
+}
+
+.delete-actions a {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    color: #222;
+    background-color: white;
+    border: 1px solid #333;
+    border-radius: 0.375rem;
+}
+
+.delete-actions a:hover {
+    background-color: #eaeaea;
+}
