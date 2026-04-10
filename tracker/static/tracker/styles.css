@@ -240,3 +240,55 @@ body {
 .login-card button:hover {
     background-color: #eaeaea;
 }
+
+.login-card a {
+    display: inline-block;
+    padding: 0.5rem 0.2rem;
+    text-decoration: none;
+    background-color: white;
+    margin-top: 0.7rem;
+    color: #3b82f6;
+}
+
+.login-card a:hover {
+    text-decoration: underline;
+}
+
+/*---------- Signup ----------*/
+.sign-up-card {
+    background-color: white;
+    padding: 0.5rem 1rem;
+    border: 1px solid #333;
+    border-radius: 0.375rem;
+}
+
+.sign-up-card input {
+    padding: 0.2rem 0.4rem;
+    border: 1px solid #333;
+    border-radius: 0.375rem;
+}
+
+.sign-up-card button {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    color: #222;
+    background-color: white;
+    border: 1px solid #333;
+    border-radius: 0.375rem;
+    cursor: pointer;
+}
+
+.sign-up-card button:hover {
+    background-color: #eaeaea;
+}
+
+.sign-up-card a {
+    display: inline-block;
+    padding: 0.5rem 0.2rem;
+    text-decoration: none;
+    color: #3b82f6;
+}
+
+.sign-up-card a:hover {
+    text-decoration: underline;
+}

@@ -24,8 +24,8 @@
         </section>
 
         <div class="list-action-links">
-            <a href="/applications/create/">Add New Application</a>
-            <a href="/applications/">Clear Filters</a>
+            <a href="{% url 'application_create' %}">Add New Application</a>
+            <a href="{% url 'application_list' %}">Clear Filters</a>
             <form method="POST" action="/accounts/logout/">
                 {% csrf_token %}
                 <button type="submit">Logout</button>
@@ -61,7 +61,7 @@
         <ul>
             {% for application in page_obj %}
                 <li>
-                    <a href="/applications/{{ application.id }}/"> 
+                    <a href="{% url 'application_detail' application.id %}"> 
                     {{ application.company_name}} - {{ application.position_title }} - {{ application.status }}
                     </a> 
                 </li>
@@ -69,13 +69,13 @@
         </ul>
             <div class="list-pagination-controls">
                 {% if page_obj.has_previous %}
-                    <a href="/applications/?q={{ search_query }}&status={{ selected_status }}&sort={{ sort_by }}&page={{ page_obj.previous_page_number }}">Previous</a>
+                    <a href="{% url 'application_list' %}?q={{ search_query }}&status={{ selected_status }}&sort={{ sort_by }}&page={{ page_obj.previous_page_number }}">Previous</a>
                 {% endif %}
 
                 <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
 
                 {% if page_obj.has_next %}
-                    <a href="/applications/?q={{ search_query }}&status={{ selected_status }}&sort={{ sort_by }}&page={{ page_obj.next_page_number }}">Next</a>
+                    <a href="{% url 'application_list' %}?q={{ search_query }}&status={{ selected_status }}&sort={{ sort_by }}&page={{ page_obj.next_page_number }}">Next</a>
                 {% endif %}
             </div>
         {% else %}

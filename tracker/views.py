@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserCreationForm
 from .models import JobApplication
 from .forms import JobApplicationForm
 
@@ -111,3 +112,19 @@ def application_delete(request, pk):
     }    
     
     return render(request, "tracker/application_confirm_delete.html", context)
+
+
+def sign_up(request):
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("login")
+        
+    else:
+        form = UserCreationForm()
+
+    context = {
+        "form": form
+    }
+    return render(request, "registration/signup.html", context)

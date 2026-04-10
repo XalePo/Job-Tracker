@@ -5,21 +5,20 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Log in</title>
+        <title>Sign Up</title>
         <link rel="stylesheet" href="{% static 'tracker/styles.css' %}">
     </head>
     <body>
-        <div class="login-wrapper">
+        <div class="sign-up-wrapper">
+            <h1>Create Account</h1>
 
-            <h1>Log in</h1>
-
-            <div class="login-card">
+            <div class="sign-up-card">
                 <form method="POST">
                     {% csrf_token %}
                     {{ form.as_p }}
-                    <button type="submit">Login</button>
+                    <button type="submit">Submit</button>
                 </form>
-                <a href="{% url 'signup' %}">Don't have an account? Sign Up</a>
+                <a href="{% url 'login' %}">Already have an account? Log in here.</a>
             </div>
 
         </div>

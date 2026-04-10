@@ -22,9 +22,9 @@
         </div>
 
         <div class="detail-actions">
-        <a href="/applications/{{ application.id }}/edit/">Edit Application</a>
-        <a href="/applications/{{ application.id }}/delete/">Delete Application</a>
-        <a href="/applications/">Back to applications</a>
+        <a href="{% url 'application_update' application.id %}">Edit Application</a>
+        <a href="{% url 'application_delete' application.id %}">Delete Application</a>
+        <a href="{% url 'application_list' %}">Back to applications</a>
         </div>
 
         </div>

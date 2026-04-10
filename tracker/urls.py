@@ -6,5 +6,5 @@ urlpatterns = [
     path("create/", application_create, name="application_create"),
     path("<int:pk>/", application_detail, name="application_detail"),
     path("<int:pk>/edit/", application_update, name="application_update"),
-    path("<int:pk>/delete/", application_delete, name="application_delete")
+    path("<int:pk>/delete/", application_delete, name="application_delete"),
 ]
