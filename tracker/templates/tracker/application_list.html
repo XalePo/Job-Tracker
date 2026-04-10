@@ -26,6 +26,10 @@
         <div class="list-action-links">
             <a href="/applications/create/">Add New Application</a>
             <a href="/applications/">Clear Filters</a>
+            <form method="POST" action="/accounts/logout/">
+                {% csrf_token %}
+                <button type="submit">Logout</button>
+            </form>
         </div>
 
         <!--Filters-->
