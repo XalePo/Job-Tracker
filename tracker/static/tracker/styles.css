@@ -109,6 +109,19 @@ body {
     font-weight: 500;
 }
 
+.list-messages {
+    margin-bottom: 1rem;
+}
+
+.list-messages p {
+    background-color: #eaf7ea;
+    color: #1f3a1f;
+    border: 1px solid #9fcea1;
+    padding: 0.75rem 1rem;
+    border-radius: 0.375rem;
+    margin-bottom: 0.75rem;
+}
+
 /*---------- Applications Details ----------*/
 .detail-card {
     background-color: white;

@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages
 from .models import JobApplication
 from .forms import JobApplicationForm
 
@@ -71,6 +72,7 @@ def application_create(request):
             application = form.save(commit=False)
             application.user = request.user
             application.save()
+            messages.success(request, 'Application Created')
             return redirect("application_list")
     else:
         form = JobApplicationForm()
@@ -89,6 +91,7 @@ def application_update(request, pk):
         form = JobApplicationForm(request.POST, instance=application)
         if form.is_valid():
             form.save()
+            messages.success(request, "Application Updated")
             return redirect("application_detail", application.id)
     else:
         form = JobApplicationForm(instance=application)
@@ -105,6 +108,7 @@ def application_delete(request, pk):
     application = JobApplication.objects.get(id=pk)
     if request.method == "POST":
         application.delete()
+        messages.success(request, "Application Deleted!")
         return redirect("application_list")
     
     context = {
@@ -119,6 +123,7 @@ def sign_up(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, "Account created!")
             return redirect("login")
         
     else:

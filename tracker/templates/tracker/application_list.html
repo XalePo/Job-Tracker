@@ -12,6 +12,14 @@
         
         <h1>Job Applications</h1>
 
+        {% if messages %}
+            <div class="list-messages">
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+
         <!--Summary-->
         <section class="list-summary">
             <ul>

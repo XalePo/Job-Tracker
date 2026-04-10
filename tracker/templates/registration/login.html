@@ -13,6 +13,14 @@
 
             <h1>Log in</h1>
 
+            {% if messages %}
+                <div class="login-messages">
+                    {% for message in messages%}
+                        <p>{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
             <div class="login-card">
                 <form method="POST">
                     {% csrf_token %}
